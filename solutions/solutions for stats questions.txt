@@ -1,0 +1,27 @@
+Ans.3) 
+
+	P(y=2)= 0.4, P(y=3)=0.6
+	By conditional probability, 
+	P(x=0|y=2)=0.5= P(x=0 & y=2)/P(y=2)
+	So, P(x=0 & y=2)=0.2 
+	Similarly,
+	P(x=0 & y=3)=0.8*0.6= 0.48
+Now,
+	P(y=3|x=0)=0.48/P(x=0)
+	By Bayes Theorem,
+	P(x=0)=P(x=0&y=2)+P(x=0&y=3)=0.68
+Hence,
+	P(y=3|x=0)=0.48/0.68=12/17 -> This is the probability that the prediction is correct.
+
+Ans.4) 
+
+	Unit vector, u=(4i+3j)/|w|=(4i+3j)/5 (unit vector obtained after normalization)
+	Now, Distances or the orthogonal projections to each x:
+	W(k)=(u.x)u -> denotes the projection to kth x
+	So, W(1)= (4/5+3/5)(4i+3j)/5=(28i/25+21j/25)
+	    W(2)= (28i/25+21j/25)
+	    W(3)= (-4/5+3/5)(4i+3j)/5=(-4i/25-3j/25)
+	    W(4)= (4/5-6/5)(4i+3j)/5=(-8i/25-6j/25)
+	Now,
+	Margin= ||minimum(mod(distances of +1 category))+minimum(mod	distances of -1 category))||
+	      =||(32i/25+24j/25)||= 40/35.355 (where ||r|| is the 		magnitude of r)

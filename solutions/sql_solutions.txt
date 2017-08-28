@@ -1,0 +1,34 @@
+ans 1 : 
+
+SELECT COUNT(DISTINCT(customer_id)),COUNT(booking_id) FROM jan;
+SELECT COUNT(DISTINCT(customer_id)),COUNT(booking_id) FROM feb;
+SELECT COUNT(DISTINCT(customer_id)),COUNT(booking_id) FROM jan;
+
+ans 2 : 
+
+SELECT city,sum(oyo_rooms*(checkout-checkin)) as room_night,SUM(amount)/sum(oyo_rooms*(checkout-checkin)) as avg_price_per_room FROM (jan NATURAL JOIN hotels) GROUP BY city;
+
+ans 3 : 
+
+CREATE VIEW hotelrevenue AS
+( SELECT hotel_id,sum(amount) as revenue FROM mar GROUP BY hotel_id ORDER by revenue DESC);
+
+CREATE VIEW t as 
+(SELECT city,hotel_id,revenue FROM hotelrevenue NATURAL JOIN hotels);
+
+SELECT * from t as t1 
+WHERE
+3 > (SELECT
+            COUNT(DISTINCT t2.revenue)
+        FROM
+            t as t2
+        WHERE
+            t2.revenue > t1.revenue
+                AND t1.city = t2.city
+        )
+        ORDER BY t1.city;
+
+
+ans 4 : 
+
+SELECT COUNT(DISTINCT(a.customer_id)) *100 / COUNT(DISTINCT(b.customer_id)) as repeat_rate from jan as a,jan as b WHERE a.customer_id in (SELECT customer_id from feb)
